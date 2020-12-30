@@ -1,18 +1,27 @@
 <main class="p-4 mt-5">
-  <section class="row">
-    <div class="col-md-4">
+  <section class="row d-flex justify-content-center">
+    <div class="col-md-4 mb-4">
       <div class="card">
-        <p class="card-header">
-          Hahaha
-        </p>
+        <div class="card-header">
+          <p class="sp">Comunidade A</p>
+        </div>
         <p class-="card-body ">
-          Blalalalal
+          Descrição dos Pokémon
         </p>
       </div>
     </div>
     <div class="col-mod-8">
-      <div class="card">
-        <img src="" alt="Foto do personagem">
+      <div class="card" *ngIf="PokemonInfo | async">
+        <img [src]="(PokemonInfo | async)?.sprites?.front_default" alt="Foto do personagem">
+        <h1>Moves do {{ (PokemonInfo | async)?.name }}</h1>
+
+        <div class="card-body">
+          <ul>
+          <li *ngFor="let move of (PokemonInfo | async)?.moves">
+            {{ move?.move?.name }}
+          </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>

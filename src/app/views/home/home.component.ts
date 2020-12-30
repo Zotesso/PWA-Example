@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PokeapiService } from 'src/app/shared/services/pokeapi.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  PokemonInfo: Observable<any>;
+
+  constructor(
+    private pokeApiService: PokeapiService
+  ) {
+    this.PokemonInfo = this.pokeApiService.getPokemonByName('absol');
+  }
 
   ngOnInit(): void {
   }
