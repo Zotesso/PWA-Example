@@ -1,7 +1,7 @@
 <main class="p-4 mt-5">
   <section class="row d-flex justify-content-center">
     <div>
-      <div class="card" *ngIf="PokemonInfo | async">
+      <div class="card w-100" *ngIf="PokemonInfo | async">
         <img [src]="(PokemonInfo | async)?.sprites?.front_default" alt="Foto do Pokémon">
         <h1>Moves do {{ (PokemonInfo | async)?.name }}</h1>
         <div class="card-body">
